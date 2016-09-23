@@ -8,7 +8,7 @@ gci -r -i *.md |foreach{(Get-Content $_).replace('.md', '.html') | Set-Content $
 #padoc all the .md files using citeproc and tikz filters
 #gi *.md |foreach{pandoc --filter pandoc-citeproc $_.name -f markdown -c ..\Stylesheets\github-pandoc.css --self-contained -t html -s -o  "$($_.basename).html" --bibliography=..\bibliography\bibliography.bib --mathjax}
 
-gi *.md |foreach{pandoc --filter pandoc-citeproc --filter tikz.py $_.name -f markdown -c ..\Stylesheets\github-pandoc.css --self-contained -t html -s -o  "$($_.basename).html" --bibliography=..\bibliography\bibliography.bib --webtex}
+gi *.md |foreach{pandoc --filter pandoc-citeproc --filter ./tikz.py $_.name -f markdown -c ..\Stylesheets\github-pandoc.css --self-contained -t html -s -o  "$($_.basename).html" --bibliography=..\bibliography\bibliography.bib --webtex}
 
 cd ..
 
