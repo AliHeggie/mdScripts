@@ -5,7 +5,7 @@ if [ $# -ne 0 ]
 		do
 		    echo "$var"
 			#copy $var md file to processing
-			find . -maxdepth 1 -name $var -type f -not -path "./processing" -print0 | xargs -0 cp -t "./processing" 
+			find . -maxdepth 1 -name $var -exec sh -c 'hercule "${0}" -o "./processing/${0}"' {} \;
 
 			#change directory to processing
 			cd processing
