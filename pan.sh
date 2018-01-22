@@ -13,7 +13,7 @@ if [ $# -ne 0 ]
 			find . -name $var -exec sed -i "s/.md/.html/g" {} \;
 
 			#padoc all the .md files using citeproc filters
-			find . -name $var -exec sh -c 'pandoc --filter pandoc-citeproc "${0}" -f markdown -t html -s -o  "${0%.md}.html" --bibliography=../Bibliography/bibliography.bib --mathjax' {} \;
+			find . -name $var -exec sh -c 'pandoc --self-contained --filter pandoc-citeproc "${0}" -f markdown -t html -s -o  "${0%.md}.html" --bibliography=../Bibliography/bibliography.bib --mathml' {} \;
 
 			name=$(echo $var | cut -f 1 -d '.')
 
