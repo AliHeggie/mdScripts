@@ -20,9 +20,9 @@ if [ $# -ne 0 ]
 			name=$(echo $var | cut -f 1 -d '.')
 
 			find . -name $name.html -type f  -print0 | xargs -0 mv -t ".." 
-			rsync  --remove-source-files "tikz-images" "../tikz-images"
 
-
+			rm -r "../tikz-images"
+			mv "tikz-images" ".." 
 			#change directory back to main
 			cd ..
 
