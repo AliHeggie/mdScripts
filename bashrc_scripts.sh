@@ -19,7 +19,7 @@ nrm() {
 
 
 #Search using grep. Exludes files containing %old tag. Excluding html files
-# Use \| and .* for OR and NOT 
+# Use \| and .* for OR and AND 
 ngr() {
         grep -v -i -l \%old ~/Dropbox/Notes/* 2>/dev/null | grep  -l -i --exclude='*.html' -E "$*" ~/Dropbox/Notes/*  2>/dev/null 
 }
