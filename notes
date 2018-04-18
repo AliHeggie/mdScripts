@@ -1,0 +1,9 @@
+_codeComplete()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "$(ls ~/Dropbox/Notes/)" -- $cur) )
+}
+
+complete -F _codeComplete n
+complete -F _codeComplete nls
+complete -F _codeComplete nrm
