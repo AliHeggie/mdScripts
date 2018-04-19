@@ -1,7 +1,8 @@
+export NOTESEDITOR="subl"
 n() {
 	if [[ $* =~ .*\.md ]]
-	then $EDITOR ~/Dropbox/Notes/"$*"
-	else $EDITOR ~/Dropbox/Notes/"$*".md
+	then $NOTESEDITOR ~/Dropbox/Notes/"$*"
+	else $NOTESEDITOR ~/Dropbox/Notes/"$*".md
 	fi
 }
 
@@ -21,7 +22,8 @@ nrm() {
 #Search using grep. Exludes files containing %old tag. Excluding html files
 # Use \| and .* for OR and AND 
 ngr() {
-        grep -v -i -l \%old ~/Dropbox/Notes/* 2>/dev/null | grep  -l -i --exclude='*.html' -E "$*" ~/Dropbox/Notes/*  2>/dev/null 
+	grep  -l -i --exclude='*.html' -E "$*" ~/Dropbox/Notes/*  2>/dev/null| xargs grep -IL \%old
+
 }
 
 #Find all unique % tags
