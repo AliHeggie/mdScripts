@@ -9,9 +9,6 @@ if [ $# -ne 0 ]
 
 			#change directory to processing
 			cd processing
-			#replace '.md' with  '.html' in all the filesz
-			find . -name $var -exec sed -i "s/.md/.html/g" {} \;
-
 			#padoc all the .md files using citeproc filters
 			find . -name $var -exec sh -c 'pandoc --self-contained --filter pandoc-citeproc "${0}" -f markdown -o  "${0%.md}.docx" --bibliography=../Bibliography/bibliography.bib --mathml' {} \;
 
@@ -36,8 +33,6 @@ find . -maxdepth 1 -name '*.md' -type f -not -path "./processing" -print0 | xarg
 
 #change directory to processing
 cd processing
-#replace '.md' with  '.docx' in all the filesz
-find . -name \*.md -exec sed -i "s/.md/.docx/g" {} \;
 
 #padoc all the .md files using citeproc filters
 find . -name \*.md -exec sh -c 'pandoc --filter pandoc-citeproc "${0}" -f markdown -t docx -s -o  "${0%.md}.docx" --bibliography=../Bibliography/bibliography.bib --mathjax' {} \;

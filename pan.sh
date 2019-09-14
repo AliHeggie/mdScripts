@@ -9,7 +9,7 @@ if [ $# -ne 0 ]
 
 			#change directory to processing
 			cd processing
-			#replace '.md' with  '.html' in all the filesz
+			#replace '.md' with  '.html' in all the files so that any links work. Note, need to call pan.sh sperately for the linked files too
 			find . -name $var -exec sed -i "s/.md/.html/g" {} \;
 
 			#padoc all the .md files using citeproc filters
@@ -36,7 +36,7 @@ find . -maxdepth 1 -name '*.md' -type f -not -path "./processing" -print0 | xarg
 
 #change directory to processing
 cd processing
-#replace '.md' with  '.html' in all the filesz
+#replace '.md' with  '.html' in all the files so that any links work. Note, need to call pan.sh sperately for the linked files too
 find . -name \*.md -exec sed -i "s/.md/.html/g" {} \;
 
 #padoc all the .md files using citeproc filters
